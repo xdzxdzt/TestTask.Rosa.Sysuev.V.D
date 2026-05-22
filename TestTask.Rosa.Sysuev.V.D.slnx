@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="TestTask.Rosa.API/TestTask.Rosa.API.csproj" />
+  <Project Path="TestTask.Rosa.Application/TestTask.Rosa.Application.csproj" />
+  <Project Path="TestTask.Rosa.Core/TestTask.Rosa.Core.csproj" />
+  <Project Path="TestTask.Rosa.DataAccess/TestTask.Rosa.DataAccess.csproj" />
+</Solution>
