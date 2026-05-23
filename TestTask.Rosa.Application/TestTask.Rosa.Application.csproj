@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TestTask.Rosa.Core\TestTask.Rosa.Core.csproj" />
+  </ItemGroup>
+
 </Project>

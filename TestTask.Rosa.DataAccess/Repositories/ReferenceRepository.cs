@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TestTask.Rosa.Core.Enums;
+using TestTask.Rosa.Core.Interfaces.Repositories;
 using TestTask.Rosa.Core.Models;
 using TestTask.Rosa.DataAccess.Entities;
 
 namespace TestTask.Rosa.DataAccess.Repositories
 {
-    public class ReferenceRepository
+    public class ReferenceRepository : IReferenceRepository
     {
         private readonly RosaDbContext _context;
 
@@ -40,7 +41,7 @@ namespace TestTask.Rosa.DataAccess.Repositories
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            if(reference is null)
+            if (reference is null)
             {
                 return null;
             }
@@ -90,14 +91,14 @@ namespace TestTask.Rosa.DataAccess.Repositories
             return affectedRows > 0;
         }
 
-        public async Task<bool> ExistsActive(Guid employeeId,ReferenceType type)
+        public async Task<bool> ExistsActive(Guid employeeId, ReferenceType type)
         {
             return await _context
                 .References
                 .AsNoTracking()
-                .AnyAsync(x => 
-                    x.UserId == employeeId && 
-                    x.Type == type && 
+                .AnyAsync(x =>
+                    x.UserId == employeeId &&
+                    x.Type == type &&
                     x.Status != ReferenceStatus.Closed);
         }
 

@@ -11,7 +11,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\TestTask.Rosa.Application\TestTask.Rosa.Application.csproj" />
+    <ProjectReference Include="..\TestTask.Rosa.DataAccess\TestTask.Rosa.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Contracts\Requests\" />
+    <Folder Include="Contracts\Responce\" />
   </ItemGroup>
 
 </Project>
