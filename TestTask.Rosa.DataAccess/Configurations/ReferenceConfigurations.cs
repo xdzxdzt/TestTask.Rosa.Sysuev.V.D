@@ -1,12 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TestTask.Rosa.Core.Models;
 using TestTask.Rosa.DataAccess.Entities;
 
 namespace TestTask.Rosa.DataAccess.Configurations
 {
+    /// <summary>
+    /// Конфигурация таблицы заявок на справки.
+    /// </summary>
     public class ReferenceConfigurations : IEntityTypeConfiguration<ReferenceEntity>
     {
+        /// <summary>
+        /// Настраивает свойства, ограничения и связи сущности заявки.
+        /// </summary>
+        /// <param name="builder">Построитель конфигурации сущности.</param>
         public void Configure(EntityTypeBuilder<ReferenceEntity> builder)
         {
             builder.HasKey(x => x.Id);
@@ -19,7 +26,7 @@ namespace TestTask.Rosa.DataAccess.Configurations
                 .IsRequired();
 
             builder.Property(x => x.Reason)
-                .HasMaxLength(Reference.REASON_MAXLENGTH)
+                .HasMaxLength(Reference.REASON_MAX_LENGTH)
                 .IsRequired();
 
             builder.Property(x => x.Status)
@@ -37,7 +44,7 @@ namespace TestTask.Rosa.DataAccess.Configurations
                 .IsRequired(false);
 
             builder
-                .ToTable(x => x.HasCheckConstraint("CK_Reference_CopiesCount","\"CopiesCount\" > 0"));
+                .ToTable(x => x.HasCheckConstraint("CK_Reference_CopiesCount", "\"CopiesCount\" > 0"));
 
             builder.HasOne(x => x.User)
                 .WithMany(x => x.References)

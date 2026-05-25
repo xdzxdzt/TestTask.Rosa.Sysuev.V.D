@@ -20,6 +20,7 @@ builder.Services.AddDbContext<RosaDbContext>(options =>
 });
 
 builder.Services.AddScoped<IReferenceRepository, ReferenceRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IReferenceService, ReferenceService>();
 
 var app = builder.Build();
